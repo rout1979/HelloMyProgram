@@ -1,7 +1,14 @@
 #include <iostream>
 
+long long factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
 int main() {
-    unsigned int number;
+    int number;
 
     std::cout << "Enter a non-negative integer: ";
     if (!(std::cin >> number)) {
@@ -9,11 +16,11 @@ int main() {
         return 1;
     }
 
-    unsigned long long factorial = 1;
-    for (unsigned int i = 2; i <= number; ++i) {
-        factorial *= i;
+    if (number < 0) {
+        std::cerr << "Factorial is not defined for negative numbers.\n";
+        return 1;
     }
 
-    std::cout << number << "! = " << factorial << '\n';
+    std::cout << number << "! = " << factorial(number) << '\n';
     return 0;
 }
